@@ -34,12 +34,9 @@ window.renderStatistics = function (ctx) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgba(256, 256, 256, 1.0)');
 
   ctx.fillStyle = '#000';
-  ctx.fillText('Вы', CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 0, CLOUD_Y + CLOUD_HEIGHT - GAP);
-  ctx.fillRect(CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 0, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
-
-  ctx.fillText('Иван', CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 1, CLOUD_Y + CLOUD_HEIGHT - GAP);
-  ctx.fillRect(CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 1, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
-
-  ctx.fillText('Юлия', CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 2, CLOUD_Y + CLOUD_HEIGHT - GAP);
-  ctx.fillRect(CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 2, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
+  var players = ['Вы', 'Иван', 'Юлия'];
+  for (var i = 0; i < players.length; i++) {
+    ctx.fillText(players[i], CLOUD_X + INDENT + (TEXT_WIDTH + GAP) * i, CLOUD_Y + CLOUD_HEIGHT - GAP);
+    ctx.fillRect(CLOUD_X + INDENT + (TEXT_WIDTH + GAP) * i, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
+  }
 };
