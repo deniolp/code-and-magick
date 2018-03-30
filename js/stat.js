@@ -1,10 +1,18 @@
 'use strict';
 
 var CLOUD_WIDTH = 320;
-var CLOUD_HEIGHT = 100;
+var CLOUD_HEIGHT = 200;
+var CLOUD_X = 180;
+var CLOUD_Y = 30;
+var GAP = 10;
+var FONT_GAP = 20;
+var BAR_WIDTH = 20;
+var TEXT_WIDTH = 50;
+var barHeight = CLOUD_HEIGHT - GAP - GAP - FONT_GAP;
+var INDENT = 30;
 
 var renderCloud = function (ctx, x, y, color) {
-  var offset = 10;
+  var offset = 5;
   ctx.beginPath();
   ctx.moveTo(x, y);
   ctx.lineTo(x + offset, y + CLOUD_HEIGHT / 2);
@@ -22,6 +30,16 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 window.renderStatistics = function (ctx) {
-  renderCloud(ctx, 190, 40, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, 180, 30, 'rgba(256, 256, 256, 1.0)');
+  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgba(256, 256, 256, 1.0)');
+
+  ctx.fillStyle = '#000';
+  ctx.fillText('Вы', CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 0, CLOUD_Y + CLOUD_HEIGHT - GAP);
+  ctx.fillRect(CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 0, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
+
+  ctx.fillText('Иван', CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 1, CLOUD_Y + CLOUD_HEIGHT - GAP);
+  ctx.fillRect(CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 1, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
+
+  ctx.fillText('Юлия', CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 2, CLOUD_Y + CLOUD_HEIGHT - GAP);
+  ctx.fillRect(CLOUD_X + INDENT + GAP + (TEXT_WIDTH + GAP) * 2, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
 };
