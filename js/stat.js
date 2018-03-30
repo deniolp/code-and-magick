@@ -44,9 +44,8 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
-  ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
-
+  ctx.fillStyle = '#000';
   ctx.fillText('Ура вы победили!', 120, 40);
   ctx.fillText('Список результатов:', 120, 60);
 
@@ -54,7 +53,15 @@ window.renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < names.length; i++) {
     ctx.fillText(names[i], CLOUD_X + INDENT + (BAR_WIDTH + INDENT) * i, CLOUD_Y + CLOUD_HEIGHT - GAP);
+
+    if (names[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      var saturation = Math.random();
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + saturation + ')';
+    }
     ctx.fillRect(CLOUD_X + INDENT + (BAR_WIDTH + INDENT) * i, CLOUD_Y + CLOUD_HEIGHT - GAP - FONT_GAP, BAR_WIDTH, barHeight * times[i] / maxTime);
+    ctx.fillStyle = '#000';
     ctx.fillText(Math.floor(times[i]), CLOUD_X + INDENT + (BAR_WIDTH + INDENT) * i, CLOUD_Y + CLOUD_HEIGHT - GAP - FONT_GAP - GAP + barHeight * times[i] / maxTime);
   }
 };
