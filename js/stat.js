@@ -29,12 +29,11 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fill();
 };
 
-window.renderStatistics = function (ctx) {
+window.renderStatistics = function (ctx, players) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgba(256, 256, 256, 1.0)');
 
   ctx.fillStyle = '#000';
-  var players = ['Вы', 'Иван', 'Юлия'];
   for (var i = 0; i < players.length; i++) {
     ctx.fillText(players[i], CLOUD_X + INDENT + (TEXT_WIDTH + GAP) * i, CLOUD_Y + CLOUD_HEIGHT - GAP);
     ctx.fillRect(CLOUD_X + INDENT + (TEXT_WIDTH + GAP) * i, CLOUD_Y + GAP, BAR_WIDTH, barHeight);
