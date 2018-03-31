@@ -1,5 +1,6 @@
 'use strict';
 
+// Константы
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
@@ -10,6 +11,7 @@ var BAR_WIDTH = 40;
 var barHeight = -150;
 var INDENT = 50;
 
+// Функция, рисующая облако
 var renderCloud = function (ctx, x, y, color) {
   var offset = 7;
   ctx.beginPath();
@@ -28,6 +30,7 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fill();
 };
 
+// Функция, вычисляющая максимальное время
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
 
