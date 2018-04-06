@@ -52,11 +52,30 @@ var generateCharacter = function () {
   };
 };
 
+var createCharacterElement = function (template, object) {
+  var element = template.cloneNode(true);
+  element.querySelector('.setup-similar-label').textContent = object.name;
+  element.querySelector('.wizard-coat').style.fill = object.coatColor;
+  element.querySelector('.wizard-eyes').style.fill = object.eyesColor;
+  return element;
+};
+
 var characterList = [];
 var setupBlock = document.querySelector('.setup');
+var setupSimilarBlock = document.querySelector('.setup-similar');
+var similarListElement = document.querySelector('.setup-similar-list');
+var characterTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+var fragment = document.createDocumentFragment();
 
 setupBlock.classList.remove('hidden');
 
 for (var i = 0; i < LIMIT_CHARACTERS; i++) {
   characterList.push(generateCharacter());
 }
+
+for (var j = 0; j < LIMIT_CHARACTERS; j++) {
+  fragment.appendChild(createCharacterElement(characterTemplate, characterList[j]));
+}
+
+similarListElement.appendChild(fragment);
+setupSimilarBlock.classList.remove('hidden');
