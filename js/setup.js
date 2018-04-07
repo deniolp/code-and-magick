@@ -44,11 +44,23 @@ var generateRandomNumber = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+var generateName = function () {
+  return CHARACTERS_NAMES[generateRandomNumber(0, CHARACTERS_NAMES.length - 1)] + ' ' + CHARACTERS_SURNAMES[generateRandomNumber(0, 7)];
+};
+
+var generateCoatColor = function () {
+  return COAT_COLORS[generateRandomNumber(0, COAT_COLORS.length - 1)];
+};
+
+var generateEyesColor = function () {
+  return EYES_COLORS[generateRandomNumber(0, EYES_COLORS.length - 1)];
+};
+
 var generateCharacter = function () {
   return {
-    name: CHARACTERS_NAMES[generateRandomNumber(0, 7)] + ' ' + CHARACTERS_SURNAMES[generateRandomNumber(0, 7)],
-    coatColor: COAT_COLORS[generateRandomNumber(0, 5)],
-    eyesColor: EYES_COLORS[generateRandomNumber(0, 4)]
+    name: generateName(),
+    coatColor: generateCoatColor(),
+    eyesColor: generateEyesColor()
   };
 };
 
