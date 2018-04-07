@@ -23,7 +23,7 @@ var CHARACTERS_SURNAMES = [
   'Ирвинг'
 ];
 
-var COAT_COLOR = [
+var COAT_COLORS = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -32,7 +32,7 @@ var COAT_COLOR = [
   'rgb(0, 0, 0)'
 ];
 
-var EYES_COLOR = [
+var EYES_COLORS = [
   'black',
   'red',
   'blue',
@@ -47,8 +47,8 @@ var generateRandomNumber = function (min, max) {
 var generateCharacter = function () {
   return {
     name: CHARACTERS_NAMES[generateRandomNumber(0, 7)] + ' ' + CHARACTERS_SURNAMES[generateRandomNumber(0, 7)],
-    coatColor: COAT_COLOR[generateRandomNumber(0, 5)],
-    eyesColor: EYES_COLOR[generateRandomNumber(0, 4)]
+    coatColor: COAT_COLORS[generateRandomNumber(0, 5)],
+    eyesColor: EYES_COLORS[generateRandomNumber(0, 4)]
   };
 };
 
