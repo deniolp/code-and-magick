@@ -101,6 +101,8 @@ var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = setup.querySelector('.setup-close');
 var userNameInput = setup.querySelector('.setup-user-name');
+var setupWizardEyes = setup.querySelector('.wizard-eyes');
+var eyesColorInput = setup.querySelector('input[name = eyes-color]');
 
 setupOpen.addEventListener('click', function () {
   openPopup();
@@ -129,6 +131,11 @@ userNameInput.addEventListener('focus', function () {
 userNameInput.addEventListener('focusout', function () {
   document.addEventListener('keydown', onPopupEscPress);
 });
+
+setupWizardEyes.addEventListener('click', function () {
+  setupWizardEyes.style.fill = generateEyesColor();
+  eyesColorInput.value = setupWizardEyes.style.fill;
+})
 
 for (var i = 0; i < LIMIT_CHARACTERS; i++) {
   characterList.push(generateCharacter());
