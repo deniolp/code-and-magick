@@ -69,7 +69,7 @@ var generateEyesColor = function () {
 
 var generateFireballColor = function () {
   return FIREBALL_COLORS[generateRandomNumber(0, FIREBALL_COLORS.length - 1)];
-}
+};
 
 var generateCharacter = function () {
   return {
