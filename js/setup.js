@@ -39,6 +39,8 @@ var EYES_COLORS = [
   'yellow',
   'green'
 ];
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 
 var generateRandomNumber = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -72,6 +74,24 @@ var createCharacterElement = function (template, object) {
   return element;
 };
 
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  setup.classList.remove('hidden');
+
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
 var characterList = [];
 var setupSimilarBlock = document.querySelector('.setup-similar');
 var similarListElement = document.querySelector('.setup-similar-list');
@@ -80,13 +100,34 @@ var fragment = document.createDocumentFragment();
 var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = setup.querySelector('.setup-close');
+var nameInput = setup.querySelector('.setup-user-name');
 
 setupOpen.addEventListener('click', function () {
-  setup.classList.remove('hidden');
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
 });
 
 setupClose.addEventListener('click', function () {
-  setup.classList.add('hidden');
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+nameInput.addEventListener('focus', function () {
+  document.removeEventListener('keydown', onPopupEscPress);
+});
+
+nameInput.addEventListener('focusout', function () {
+  document.addEventListener('keydown', onPopupEscPress);
 });
 
 for (var i = 0; i < LIMIT_CHARACTERS; i++) {
