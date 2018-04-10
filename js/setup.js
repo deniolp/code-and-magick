@@ -73,13 +73,21 @@ var createCharacterElement = function (template, object) {
 };
 
 var characterList = [];
-var setupBlock = document.querySelector('.setup');
 var setupSimilarBlock = document.querySelector('.setup-similar');
 var similarListElement = document.querySelector('.setup-similar-list');
 var characterTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 var fragment = document.createDocumentFragment();
+var setupOpen = document.querySelector('.setup-open');
+var setup = document.querySelector('.setup');
+var setupClose = setup.querySelector('.setup-close');
 
-setupBlock.classList.remove('hidden');
+setupOpen.addEventListener('click', function () {
+  setup.classList.remove('hidden');
+});
+
+setupClose.addEventListener('click', function () {
+  setup.classList.add('hidden');
+});
 
 for (var i = 0; i < LIMIT_CHARACTERS; i++) {
   characterList.push(generateCharacter());
