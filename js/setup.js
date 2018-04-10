@@ -100,7 +100,7 @@ var fragment = document.createDocumentFragment();
 var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = setup.querySelector('.setup-close');
-var nameInput = setup.querySelector('.setup-user-name');
+var userNameInput = setup.querySelector('.setup-user-name');
 
 setupOpen.addEventListener('click', function () {
   openPopup();
@@ -122,11 +122,11 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-nameInput.addEventListener('focus', function () {
+userNameInput.addEventListener('focus', function () {
   document.removeEventListener('keydown', onPopupEscPress);
 });
 
-nameInput.addEventListener('focusout', function () {
+userNameInput.addEventListener('focusout', function () {
   document.addEventListener('keydown', onPopupEscPress);
 });
 
