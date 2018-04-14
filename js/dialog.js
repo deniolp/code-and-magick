@@ -10,6 +10,7 @@ dialogHandle.addEventListener('mousedown', function (evt) {
     x: evt.clientX,
     y: evt.clientY
   };
+  //  Здесь координаты места, где в первый раз нажата мышка
 
   var onMouseMove = function (moveEvt) {
     moveEvt.preventDefault();
@@ -18,6 +19,8 @@ dialogHandle.addEventListener('mousedown', function (evt) {
       x: startCoords.x - moveEvt.clientX,
       y: startCoords.y - moveEvt.clientY
     };
+
+    //  Здесь он считает, на какое расстояние мы подвинули элемент
 
     startCoords = {
       x: moveEvt.clientX,
