@@ -120,6 +120,41 @@ var eyesColorInputElement = setupElement.querySelector('input[name = eyes-color]
 var setupFireballWrapElement = setupElement.querySelector('.setup-fireball-wrap');
 var fireballColorInputElement = setupElement.querySelector('input[name = fireball-color]');
 
+var shopElement = document.querySelector('.setup-artifacts-shop');
+var draggedItem = null;
+var artifactsElement = document.querySelector('.setup-artifacts');
+
+shopElement.addEventListener('dragstart', function (evt) {
+  if (evt.target.tagName.toLowerCase() === 'img') {
+    draggedItem = evt.target;
+    artifactsElement.style.outline = '2px dashed red';
+    evt.dataTransfer.setData('text/plain', evt.target.alt);
+  }
+});
+
+artifactsElement.addEventListener('dragover', function (evt) {
+  evt.preventDefault();
+  return false;
+});
+
+artifactsElement.addEventListener('drop', function (evt) {
+  evt.target.style.backgroundColor = '';
+  evt.target.appendChild(draggedItem);
+  artifactsElement.style.outline = '';
+  evt.preventDefault();
+});
+
+
+artifactsElement.addEventListener('dragenter', function (evt) {
+  evt.target.style.backgroundColor = 'yellow';
+  evt.preventDefault();
+});
+
+artifactsElement.addEventListener('dragleave', function (evt) {
+  evt.target.style.backgroundColor = '';
+  evt.preventDefault();
+});
+
 setupOpenElement.addEventListener('click', function () {
   openPopup();
 });
@@ -160,10 +195,7 @@ setupFireballWrapElement.addEventListener('click', function () {
 
 for (var i = 0; i < LIMIT_CHARACTERS; i++) {
   characterList.push(generateCharacter());
-}
-
-for (var j = 0; j < LIMIT_CHARACTERS; j++) {
-  fragment.appendChild(createCharacterElement(characterTemplate, characterList[j]));
+  fragment.appendChild(createCharacterElement(characterTemplate, characterList[i]));
 }
 
 similarListElement.appendChild(fragment);
