@@ -138,17 +138,16 @@ shopElement.addEventListener('dragend', function () {
 
 artifactsElement.addEventListener('dragover', function (evt) {
   evt.preventDefault();
-  return false;
 });
 
 artifactsElement.addEventListener('drop', function (evt) {
   evt.target.style.backgroundColor = '';
   if (!evt.target.hasChildNodes() && evt.target.tagName.toLowerCase() !== 'img') {
     evt.target.appendChild(draggedItem);
-  } artifactsElement.style.outline = '';
+  }
+  artifactsElement.style.outline = '';
   evt.preventDefault();
 });
-
 
 artifactsElement.addEventListener('dragenter', function (evt) {
   if (!evt.target.hasChildNodes() && evt.target.tagName.toLowerCase() !== 'img') {
