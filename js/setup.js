@@ -125,11 +125,12 @@ var draggedItem = null;
 var artifactsElement = document.querySelector('.setup-artifacts');
 
 shopElement.addEventListener('dragstart', function (evt) {
-  if (evt.target.tagName.toLowerCase() === 'img') {
-    draggedItem = evt.target.cloneNode(true);
-    artifactsElement.style.outline = '2px dashed red';
-    evt.dataTransfer.setData('text/plain', evt.target.alt);
+  if (!evt.target.tagName.toLowerCase() === 'img') {
+    return;
   }
+  draggedItem = evt.target.cloneNode(true);
+  artifactsElement.style.outline = '2px dashed red';
+  evt.dataTransfer.setData('text/plain', evt.target.alt);
 });
 
 shopElement.addEventListener('dragend', function () {
