@@ -125,7 +125,7 @@ var draggedItem;
 var artifactsElement = document.querySelector('.setup-artifacts');
 
 shopElement.addEventListener('dragstart', function (evt) {
-  if (!evt.target.tagName.toLowerCase() === 'img') {
+  if (evt.target.tagName.toLowerCase() !== 'img') {
     return;
   }
   draggedItem = evt.target.cloneNode(true);
