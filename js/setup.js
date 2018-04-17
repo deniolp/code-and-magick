@@ -121,7 +121,7 @@ var setupFireballWrapElement = setupElement.querySelector('.setup-fireball-wrap'
 var fireballColorInputElement = setupElement.querySelector('input[name = fireball-color]');
 
 var shopElement = document.querySelector('.setup-artifacts-shop');
-var draggedItem = null;
+var draggedItem;
 var artifactsElement = document.querySelector('.setup-artifacts');
 
 shopElement.addEventListener('dragstart', function (evt) {
@@ -135,6 +135,7 @@ shopElement.addEventListener('dragstart', function (evt) {
 
 shopElement.addEventListener('dragend', function () {
   artifactsElement.style.outline = '';
+  draggedItem = null;
 });
 
 artifactsElement.addEventListener('dragover', function (evt) {
