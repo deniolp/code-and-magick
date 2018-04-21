@@ -83,6 +83,7 @@
 
   var characterList = [];
   var setupElement = document.querySelector('.setup');
+  var form = setupElement.querySelector('.setup-wizard-form');
   var setupSimilarBlock = document.querySelector('.setup-similar');
   var similarListElement = document.querySelector('.setup-similar-list');
   var characterTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
@@ -110,4 +111,11 @@
 
   similarListElement.appendChild(fragment);
   setupSimilarBlock.classList.remove('hidden');
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function () {
+      setupElement.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
 })();
