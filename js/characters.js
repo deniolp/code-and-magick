@@ -26,7 +26,8 @@
     return FIREBALL_COLORS[window.utils.generateRandomNumber(0, FIREBALL_COLORS.length - 1)];
   };
 
-  var successHandler = function (wizards) {
+  var successHandler = function (data) {
+    wizards = data;
     window.render(wizards);
   };
 
@@ -49,6 +50,8 @@
   var eyesColorInputElement = setupElement.querySelector('input[name = eyes-color]');
   var setupFireballWrapElement = setupElement.querySelector('.setup-fireball-wrap');
   var fireballColorInputElement = setupElement.querySelector('input[name = fireball-color]');
+
+  var wizards = [];
 
   setupWizardEyesElement.addEventListener('click', function () {
     setupWizardEyesElement.style.fill = generateEyesColor();
