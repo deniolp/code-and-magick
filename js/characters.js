@@ -26,6 +26,10 @@
     return FIREBALL_COLORS[window.utils.generateRandomNumber(0, FIREBALL_COLORS.length - 1)];
   };
 
+  var successHandler = function (wizards) {
+    window.render(wizards);
+  };
+
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
@@ -56,7 +60,7 @@
     setupFireballWrapElement.style.backgroundColor = fireballColorInputElement.value;
   });
 
-  window.backend.load(window.render, errorHandler);
+  window.backend.load(successHandler, errorHandler);
 
   form.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(form), function () {
