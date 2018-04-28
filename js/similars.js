@@ -55,12 +55,12 @@
 
   window.wizard.eyesPressHandler = function (color) {
     eyesColor = color;
-    updateWizards();
+    window.debounce(updateWizards);
   };
 
   window.wizard.coatPressHandler = function (color) {
     coatColor = color;
-    updateWizards();
+    window.debounce(updateWizards);
   };
 
   var wizards = [];
