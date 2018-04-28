@@ -18,6 +18,8 @@
   window.render = function (wizards) {
     var fragment = document.createDocumentFragment();
 
+    similarListElement.innerHTML = '';
+
     for (var i = 0; i < LIMIT_CHARACTERS; i++) {
       fragment.appendChild(createCharacterElement(characterTemplate, wizards[i]));
     }
