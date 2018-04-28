@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-  var LIMIT_CHARACTERS = 4;
 
   var EYES_COLORS = [
     'black',
@@ -27,25 +26,6 @@
     return FIREBALL_COLORS[window.utils.generateRandomNumber(0, FIREBALL_COLORS.length - 1)];
   };
 
-  var createCharacterElement = function (template, object) {
-    var element = template.cloneNode(true);
-    element.querySelector('.setup-similar-label').textContent = object.name;
-    element.querySelector('.wizard-coat').style.fill = object.colorCoat;
-    element.querySelector('.wizard-eyes').style.fill = object.colorEyes;
-    return element;
-  };
-
-  var successHandler = function (wizards) {
-    var fragment = document.createDocumentFragment();
-
-    for (var i = 0; i < LIMIT_CHARACTERS; i++) {
-      fragment.appendChild(createCharacterElement(characterTemplate, wizards[i]));
-    }
-    similarListElement.appendChild(fragment);
-
-    setupSimilarBlock.classList.remove('hidden');
-  };
-
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
@@ -60,9 +40,6 @@
 
   var setupElement = document.querySelector('.setup');
   var form = setupElement.querySelector('.setup-wizard-form');
-  var setupSimilarBlock = document.querySelector('.setup-similar');
-  var similarListElement = document.querySelector('.setup-similar-list');
-  var characterTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
   var setupWizardEyesElement = setupElement.querySelector('.wizard-eyes');
   var eyesColorInputElement = setupElement.querySelector('input[name = eyes-color]');
@@ -79,7 +56,7 @@
     setupFireballWrapElement.style.backgroundColor = fireballColorInputElement.value;
   });
 
-  window.backend.load(successHandler, errorHandler);
+  window.backend.load(window.render, errorHandler);
 
   form.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(form), function () {
