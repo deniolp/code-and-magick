@@ -1020,3 +1020,18 @@ input[type=radio]:checked + .review-mark-label
 
     opacity: 0;
 }
+
+.upload__avatar
+{
+  position: absolute;
+  z-index: 1;
+  bottom: -20px;
+  left: 0;
+
+  width: 40px;
+  height: 20px;
+
+  background-color: blue;
+  border-radius: 30%;
+  opacity: .2;
+}
