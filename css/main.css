@@ -848,6 +848,7 @@ input[type=radio]:checked + .review-mark-label
 
 .setup-footer
 {
+    position: relative;
     padding-bottom: 20px;
 
     border-top: 10px solid #1cb34d;
@@ -1034,4 +1035,29 @@ input[type=radio]:checked + .review-mark-label
   background-color: blue;
   border-radius: 30%;
   opacity: .2;
+}
+
+.similar-wizards-artifacts
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-height: 300px;
+  transform: translateY(-100%);
+  background-color: #89a1fd;
+  color: white;
+}
+
+.artifacts-list
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.artifacts-item
+{
+  margin-top: 20px;
 }

@@ -12,6 +12,14 @@
     element.querySelector('.setup-similar-label').textContent = object.name;
     element.querySelector('.wizard-coat').style.fill = object.colorCoat;
     element.querySelector('.wizard-eyes').style.fill = object.colorEyes;
+
+    element.addEventListener('mouseenter', function () {
+      window.wizardsArtifacts.show(object.artifacts);
+    });
+    element.addEventListener('mouseleave', function () {
+      window.wizardsArtifacts.hide();
+    });
+
     return element;
   };
 
