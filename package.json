@@ -13,7 +13,7 @@
   "devDependencies": {
     "eslint": "^5.13.0",
     "eslint-config-htmlacademy": "0.4.x",
-    "lodash": "^4.17.19"
+    "lodash": "^4.17.21"
   },
   "license": "MIT",
   "dependencies": {
