@@ -19,7 +19,7 @@
   "dependencies": {
     "eslint-utils": "^1.4.2",
     "js-yaml": "^3.13.1",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.6"
   },
   "scripts": {
     "test": "eslint js/"
